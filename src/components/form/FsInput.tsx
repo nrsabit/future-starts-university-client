@@ -1,4 +1,4 @@
-import { Input } from "antd";
+import { Form, Input } from "antd";
 import { Controller } from "react-hook-form";
 
 type FSInputType = {
@@ -10,10 +10,13 @@ type FSInputType = {
 const FsInput = ({ type, name, label }: FSInputType) => {
   return (
     <div style={{ marginBottom: "20px" }}>
-      {label ? label : null}
       <Controller
         name={name}
-        render={({ field }) => <Input {...field} type={type} id={name} />}
+        render={({ field }) => (
+          <Form.Item label={label}>
+            <Input {...field} type={type} id={name} />
+          </Form.Item>
+        )}
       />
     </div>
   );
