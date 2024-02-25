@@ -123,7 +123,6 @@ const CreateStudent = () => {
     formData.append("data", JSON.stringify(studentData));
     formData.append("file", data.profileImage)
     try {
-      console.log(semesterData);
       const res = (await addStudent(
         formData
       )) as TResponseWithReduxAndBaseQuery<any>;
