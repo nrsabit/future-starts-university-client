@@ -1,7 +1,7 @@
 import AdminDashboard from "../pages/Admin/AdminDashboard";
-import CreateAdmin from "../pages/Admin/CreateAdmin";
-import CreateFaculty from "../pages/Admin/CreateFaculty";
-import CreateStudent from "../pages/Admin/CreateStudent";
+import CreateAdmin from "../pages/Admin/UserManagement/CreateAdmin";
+import CreateFaculty from "../pages/Admin/UserManagement/CreateFaculty";
+import CreateStudent from "../pages/Admin/UserManagement/CreateStudent";
 import { NavLink } from "react-router-dom";
 import { TSidebarItems } from "../types";
 import AcademicSemesters from "../pages/Admin/AcademicManagement/AcademicSemesters";
@@ -10,6 +10,8 @@ import CreateAcademicFaculty from "../pages/Admin/AcademicManagement/CreateAcade
 import AcademicFaculties from "../pages/Admin/AcademicManagement/AcademicFaculties";
 import CreateAcademicDepartment from "../pages/Admin/AcademicManagement/CreateAcademicDepartment";
 import AcademicDepartments from "../pages/Admin/AcademicManagement/AcademicDepartments";
+import AllStudents from "../pages/Admin/UserManagement/AllStudents";
+import StudentDetails from "../pages/Admin/UserManagement/StudentDetails";
 
 export const adminPaths = [
   {
@@ -56,6 +58,20 @@ export const adminPaths = [
     name: "User Management",
     children: [
       {
+        name: "Create Student",
+        path: "create-student",
+        element: <CreateStudent />,
+      },
+      {
+        path: "student-details/:studentId",
+        element: <StudentDetails />,
+      },
+      {
+        name: "All Students",
+        path: "all-students",
+        element: <AllStudents />,
+      },
+      {
         name: "Create Admin",
         path: "create-admin",
         element: <CreateAdmin />,
@@ -64,16 +80,6 @@ export const adminPaths = [
         name: "Create Faculty",
         path: "create-faculty",
         element: <CreateFaculty />,
-      },
-      {
-        name: "Create Student",
-        path: "create-student",
-        element: <CreateStudent />,
-      },
-      {
-        name: "Create Member",
-        path: "create-member",
-        element: <CreateStudent />,
       },
     ],
   },

@@ -13,7 +13,7 @@ export type TRoutePath = {
 };
 
 export type TSidebarItems = {
-  key: string;
+  key?: string;
   label: ReactNode;
   children?: TSidebarItems[];
-};
+} | undefined;
