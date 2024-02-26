@@ -3,7 +3,7 @@ import { FieldValues } from "react-hook-form";
 import { useLoginMutation } from "../redux/features/auth/authApi";
 import { useAppDispatch } from "../redux/hooks";
 import { verifyToken } from "../utils/verifyToken";
-import { TUser, setUser } from "../redux/features/auth/authSlice";
+import { TUserPayload, setUser } from "../redux/features/auth/authSlice";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import FsForm from "../components/form/FsForm";
@@ -18,8 +18,8 @@ const Login = () => {
   }
 
   const defaultValues = {
-    id: "A-0001",
-    password: "hello hablu",
+    id: "2025020001",
+    password: "fsuniversity!@$",
   };
 
   const onSubmit = async (data: FieldValues) => {
@@ -27,10 +27,15 @@ const Login = () => {
     try {
       const toastId = toast.loading("logging in");
       const res = await login(data).unwrap();
-      const user = verifyToken(res.data.accessToken) as TUser;
+      const user = verifyToken(res.data.accessToken) as TUserPayload;
       dispatch(setUser({ user, token: res.data.accessToken }));
       toast.success("Logged In", { duration: 2000, id: toastId });
-      navigate(`/${user.role}/dashboard`);
+
+      if (res.data.needsPasswordChange) {
+        navigate("/change-password");
+      } else {
+        navigate(`/${user.role}/dashboard`);
+      }
     } catch (err) {
       toast.error("Something went wrong", { duration: 2000 });
     }

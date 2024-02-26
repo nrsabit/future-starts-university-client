@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { useGetAllAcademicSemestersQuery } from "../../../redux/features/admin/academicManagement.api";
 import { TAcademicSemester, TResponseWithRedux } from "../../../types";
 import { semesterStatusOptions } from "../../../constants/semesters";
-import FsDatePicker from "../../../components/form/FsDatePicket";
+import FsDatePicker from "../../../components/form/FsDatePicker";
 import FsInput from "../../../components/form/FsInput";
 import { useCreateSemesterRegistrationMutation } from "../../../redux/features/admin/courseManagement.api";
 

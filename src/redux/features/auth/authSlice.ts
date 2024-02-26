@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
 
-export type TUser = {
+export type TUserPayload = {
   id: string;
   role : string;
   iat : number;
@@ -9,7 +9,7 @@ export type TUser = {
 }
 
 type StateType = {
-  user: null | TUser;
+  user: null | TUserPayload;
   token: null | string;
 };
 

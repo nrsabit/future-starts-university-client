@@ -4,7 +4,12 @@ import { adminPaths } from "../../routes/admin.routes";
 import { facultyPaths } from "../../routes/faculty.routes";
 import { studentPaths } from "../../routes/student.routes";
 import { useAppSelector } from "../../redux/hooks";
-import { selectCurrentUser } from "../../redux/features/auth/authSlice";
+import {
+  TUserPayload,
+  selectCurrentToken,
+} from "../../redux/features/auth/authSlice";
+import { verifyToken } from "../../utils/verifyToken";
+import { ItemType, MenuItemType } from "antd/es/menu/hooks/useItems";
 
 const { Sider } = Layout;
 
@@ -15,7 +20,13 @@ const SidebarLayout = () => {
     STUDENT: "student",
   };
 
-  const user = useAppSelector(selectCurrentUser);
+  const token = useAppSelector(selectCurrentToken);
+
+  let user;
+  if (token) {
+    user = verifyToken(token) as TUserPayload;
+  }
+
   const userRole = user?.role;
 
   let sidebarItems;
@@ -62,7 +73,7 @@ const SidebarLayout = () => {
         theme="dark"
         mode="inline"
         defaultSelectedKeys={["4"]}
-        items={sidebarItems}
+        items={sidebarItems as ItemType<MenuItemType>[]}
       />
     </Sider>
   );

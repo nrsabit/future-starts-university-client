@@ -4,7 +4,7 @@ import FsInput from "../../../components/form/FsInput";
 import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
 import FsSelect from "../../../components/form/FsSelect";
 import { bloodGroupOptions, genderOptions } from "../../../constants/globals";
-import FsDatePicker from "../../../components/form/FsDatePicket";
+import FsDatePicker from "../../../components/form/FsDatePicker";
 import {
   useGetAcademicDepartmentsQuery,
   useGetAllAcademicSemestersQuery,
@@ -121,7 +121,7 @@ const CreateStudent = () => {
 
     const formData = new FormData();
     formData.append("data", JSON.stringify(studentData));
-    formData.append("file", data.profileImage)
+    formData.append("file", data.profileImage);
     try {
       const res = (await addStudent(
         formData
