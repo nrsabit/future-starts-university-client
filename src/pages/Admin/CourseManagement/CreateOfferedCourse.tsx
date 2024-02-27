@@ -74,7 +74,7 @@ const CreateOfferedCourse = () => {
 
   const facultiesOptions = facultiesData?.data?.faculties?.map((item: any) => ({
     value: item._id,
-    label: `${item.firstName} ${item.middleName} ${item.lastName}`,
+    label: `${item.name.firstName} ${item.name.middleName} ${item.name.lastName}`,
   }));
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {

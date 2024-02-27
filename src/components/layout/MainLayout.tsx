@@ -34,7 +34,7 @@ const MainLayout = () => {
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          PH University ©{new Date().getFullYear()} Created by NRS
+          Future Stars University ©{new Date().getFullYear()} Created by NRS
         </Footer>
       </Layout>
     </Layout>

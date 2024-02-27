@@ -18,8 +18,8 @@ const Login = () => {
   }
 
   const defaultValues = {
-    id: "2025020001",
-    password: "fsuniversity!@$",
+    id: "F-0004",
+    password: "faculty123",
   };
 
   const onSubmit = async (data: FieldValues) => {

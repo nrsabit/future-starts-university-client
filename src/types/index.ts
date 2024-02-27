@@ -3,3 +3,4 @@ export * from "./global";
 export * from "./AcademicManagement.types";
 export * from "./UserManagement.type";
 export * from "./CourseManagement.types";
+export * from "./StudentCourse.types"
