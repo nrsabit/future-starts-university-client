@@ -19,7 +19,12 @@ const MyStudents = () => {
   ]);
 
   const tableData = facultyCoursesData?.data?.map(
-    ({ _id, student, semesterRegistration, offeredCourse }) => ({
+    ({
+      _id,
+      student,
+      semesterRegistration,
+      offeredCourse,
+    }: Record<string, any>) => ({
       key: _id,
       name: `${student?.name?.firstName} ${student?.name?.middleName} ${student?.name?.lastName}`,
       roll: student?.id,

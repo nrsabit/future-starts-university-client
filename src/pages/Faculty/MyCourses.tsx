@@ -9,10 +9,22 @@ const MyCourses = () => {
   const navigate = useNavigate();
   const { data: facultyCoursesData } = useGetAllFacultyCoursesQuery(undefined);
 
-  const semesterOptions = facultyCoursesData?.data?.map((item: any) => ({
-    label: `${item.academicSemester.name} ${item.academicSemester.year}`,
-    value: item.semesterRegistration._id,
-  }));
+  const uniqueValuesSet = new Set();
+
+  const semesterOptions = facultyCoursesData?.data
+    ?.map((item: any) => {
+      const value = item?.semesterRegistration?._id;
+      if (!uniqueValuesSet.has(value)) {
+        uniqueValuesSet.add(value);
+        return {
+          label: `${item.academicSemester.name} ${item.academicSemester.year}`,
+          value: value,
+        };
+      } else {
+        return null; // Return null for duplicate values
+      }
+    })
+    .filter(Boolean);
 
   const courseOptions = facultyCoursesData?.data?.map((item: any) => ({
     label: item.course.title,
@@ -35,7 +47,12 @@ const MyCourses = () => {
             name="semesterRegistration"
             label="Semester"
           />
-          <FsSelect options={courseOptions} name="course" label="Course" />
+          <FsSelect
+            disabled={!semesterOptions?.length}
+            options={courseOptions}
+            name="course"
+            label="Course"
+          />
           <Button htmlType="submit">Submit</Button>
         </FsForm>
       </Col>

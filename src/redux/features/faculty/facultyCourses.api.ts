@@ -1,4 +1,4 @@
-import { TOfferedCourse, TResponseWithRedux } from "../../../types";
+import { TResponseWithRedux } from "../../../types";
 import { baseApi } from "../../api/baseApi";
 
 const facultyCoursesApi = baseApi.injectEndpoints({
@@ -18,9 +18,7 @@ const facultyCoursesApi = baseApi.injectEndpoints({
           params: params,
         };
       },
-      transformErrorResponse: (
-        response: TResponseWithRedux<TOfferedCourse[]>
-      ) => {
+      transformErrorResponse: (response: TResponseWithRedux<any>) => {
         return {
           meta: response.meta,
           data: response.data,
